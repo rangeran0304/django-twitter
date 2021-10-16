@@ -89,7 +89,10 @@ class AccountViewSet(viewsets.ViewSet):
         }, status=201)
     @action (methods=['get'],detail=False)
     def login_status(self,request):
-        data = {'if_logged_in':request.user.is_authenticated}
+        data = {
+            'if_logged_in':request.user.is_authenticated,
+            'ip': request.META['REMOTE_ADDR'],
+        }
         if request.user.is_authenticated:
             data['user'] = UserSerializer(request.user).data
         return Response(data)
