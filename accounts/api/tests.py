@@ -123,3 +123,4 @@ class AccountApiTests(TestCase):
         response = self.client.get(LOGIN_STATUS_URL)
         self.assertEqual(response.data['if_logged_in'], True)
 
+
