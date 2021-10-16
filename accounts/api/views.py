@@ -43,12 +43,6 @@ class AccountViewSet(viewsets.ViewSet):
             },status=400)
         username1 = serializer.validated_data['username']
         password1 = serializer.validated_data['password']
-        if not User.objects.filter(username = username1).exists():
-            return Response({
-                "success": False,
-                "message": "the username does not exist",
-                "errors": serializer.errors,
-            })
         user = django_authenticate(username = username1, password = password1)
         if not user or user.is_anonymous:
             return Response({
