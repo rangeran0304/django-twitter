@@ -60,7 +60,7 @@ class AccountViewSet(viewsets.ViewSet):
         return Response({
             "success": True,
             "user":UserSerializer(instance = user).data,
-        })
+        },status = 200)
     @action(methods=['post'],detail=False)
     def logout(self,rquest):
         """
