@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # project apps
     'accounts',
     'tweets',
-    'debug_toolbar',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -50,7 +49,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -135,11 +134,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 INTERNAL_IPS = ['127.0.0.1', '192.168.33.10', 'localhost','10.0.2.2']
-DEBUG_TOOLBAR_CONFIG = {
-        'JQUERY_URL': '//cdn.bootcss.com/jquery/2.1.4/jquery.min.js',
-        # 或把jquery下载到本地然后取消下面这句的注释, 并把上面那句删除或注释掉
-        #'JQUERY_URL': '/static/jquery/2.1.4/jquery.min.js',
-        'SHOW_COLLAPSED': True,
-        'SHOW_TOOLBAR_CALLBACK': lambda x: True,
-}
+
+
 

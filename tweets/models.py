@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from utils.time_helpers import utc_now
 
 
+# 建立联合索引，并配置排序配置
+# 首先根据user排序再根据createdat排序。-代表降序
+class Meta:
+    index_together = (('user','created_at'),)
+    ordering = ('user','-created_at')
+
 class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete= models.SET_NULL, null=True)
     content = models.CharField(max_length=255)
