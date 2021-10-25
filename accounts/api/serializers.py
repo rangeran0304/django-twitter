@@ -84,3 +84,8 @@ class TweetcreateSerializer(serializers.ModelSerializer):
         content = validated_data['content']
         tweet = Tweet.objects.create(user=user, content=content)
         return tweet
+class UserserializerForFollower(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id','username')

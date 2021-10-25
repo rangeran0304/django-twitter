@@ -22,11 +22,13 @@ from rest_framework import routers
 from accounts.api import views
 from tweets.api.views import TweetViewset
 from django.conf import settings
+from friendships.api.views import FriendshipsViewSet
 
 router = routers.DefaultRouter()
 router.register(r'api/users', views.UserViewSet)
 router.register(r'api/accounts', views.AccountViewSet, basename='accounts')
 router.register(r'api/tweets', TweetViewset, basename='tweets')
+router.register(r'api/friendships', FriendshipsViewSet, basename='Friendships')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
