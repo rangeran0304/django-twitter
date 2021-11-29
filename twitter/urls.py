@@ -23,12 +23,18 @@ from accounts.api import views
 from tweets.api.views import TweetViewset
 from django.conf import settings
 from friendships.api.views import FriendshipsViewSet
+from newsfeeds.api.views import NewsFeedViewSet
+from comments.api.views import CommentViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'api/users', views.UserViewSet)
 router.register(r'api/accounts', views.AccountViewSet, basename='accounts')
 router.register(r'api/tweets', TweetViewset, basename='tweets')
 router.register(r'api/friendships', FriendshipsViewSet, basename='Friendships')
+router.register(r'api/newsfeeds', NewsFeedViewSet, basename='NewsFeeds')
+router.register(r'api/comments', CommentViewSet, basename='comments')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

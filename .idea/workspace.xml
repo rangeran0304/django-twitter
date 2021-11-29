@@ -2,15 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="828dbe05-656c-4e72-9550-6447fee0a03c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/friendships/api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/friendships/api/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/friendships/api/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/friendships/api/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/api/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/api/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/api/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/api/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friendships/services.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newsfeeds/api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newsfeeds/api/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newsfeeds/api/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newsfeeds/services.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/decorators.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friendships/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friendships/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing/testcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/testcase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/urls.py" afterDir="false" />
     </list>
@@ -50,11 +61,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/comments/api" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
-  <component name="RunManager" selected="Django tests.Test: friendships.api.tests.FriendshipApiTest.test_followers">
-    <configuration name="Test: friendships.api.tests.FriendshipApiTest.test_follow" type="DjangoTestsConfigurationType" temporary="true">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\django_twitter\django-twitter\comments\api" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.django-twitter">
+    <configuration name="Test: accounts.tests.Tweet_test.test_get_followers" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -67,14 +83,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="friendships.api.tests.FriendshipApiTest.test_follow" />
+      <option name="TARGET" value="accounts.tests.Tweet_test.test_get_followers" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: friendships.api.tests.FriendshipApiTest.test_followers" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: comments.api.tests.CommentApiTests.test_update" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -87,14 +103,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="friendships.api.tests.FriendshipApiTest.test_followers" />
+      <option name="TARGET" value="comments.api.tests.CommentApiTests.test_update" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: friendships.api.tests.FriendshipApiTest.test_followings" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: comments.api.tests.CommentApiTests.testcreate" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,14 +123,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="friendships.api.tests.FriendshipApiTest.test_followings" />
+      <option name="TARGET" value="comments.api.tests.CommentApiTests.testcreate" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: friendships.api.tests.FriendshipApiTest.test_unfollow" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: comments.api.tests.CommentApiTests.testlist" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,14 +143,14 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="friendships.api.tests.FriendshipApiTest.test_unfollow" />
+      <option name="TARGET" value="comments.api.tests.CommentApiTests.testlist" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test: tweets.api.tests.TweetApiTests" type="DjangoTestsConfigurationType" temporary="true">
+    <configuration name="Test: tweets.api.tests.TweetApiTests.test_retrive" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,7 +163,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="tweets.api.tests.TweetApiTests" />
+      <option name="TARGET" value="tweets.api.tests.TweetApiTests.test_retrive" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -180,11 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Django tests.Test: friendships.api.tests.FriendshipApiTest.test_followers" />
-        <item itemvalue="Django tests.Test: friendships.api.tests.FriendshipApiTest.test_followings" />
-        <item itemvalue="Django tests.Test: friendships.api.tests.FriendshipApiTest.test_unfollow" />
-        <item itemvalue="Django tests.Test: friendships.api.tests.FriendshipApiTest.test_follow" />
-        <item itemvalue="Django tests.Test: tweets.api.tests.TweetApiTests" />
+        <item itemvalue="Django tests.Test: tweets.api.tests.TweetApiTests.test_retrive" />
+        <item itemvalue="Django tests.Test: comments.api.tests.CommentApiTests.testlist" />
+        <item itemvalue="Django tests.Test: comments.api.tests.CommentApiTests.test_update" />
+        <item itemvalue="Django tests.Test: comments.api.tests.CommentApiTests.testcreate" />
+        <item itemvalue="Django tests.Test: accounts.tests.Tweet_test.test_get_followers" />
       </list>
     </recent_temporary>
   </component>
@@ -212,6 +228,18 @@
       <workItem from="1634965639650" duration="2967000" />
       <workItem from="1635081495039" duration="3540000" />
       <workItem from="1635136006113" duration="17037000" />
+      <workItem from="1635223185225" duration="10027000" />
+      <workItem from="1636527274115" duration="1000" />
+      <workItem from="1636971220647" duration="5291000" />
+      <workItem from="1637052259107" duration="129000" />
+      <workItem from="1637506881263" duration="1018000" />
+      <workItem from="1637591367467" duration="694000" />
+      <workItem from="1637645712622" duration="16795000" />
+      <workItem from="1637754942928" duration="11409000" />
+      <workItem from="1637904179083" duration="636000" />
+      <workItem from="1637908829221" duration="15675000" />
+      <workItem from="1638173342742" duration="611000" />
+      <workItem from="1638174486884" duration="3866000" />
     </task>
     <servers />
   </component>
@@ -232,14 +260,21 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_api_tests_TweetApiTests_test_list_api.coverage" NAME="Test: tweets.api.tests.TweetApiTests.test_list_api Coverage Results" MODIFIED="1634965182833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__comments_api_tests_CommentApiTests_testcreate.coverage" NAME="Test: comments.api.tests.CommentApiTests.testcreate Coverage Results" MODIFIED="1637761182773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_api_tests_TweetApiTests.coverage" NAME="Test: tweets.api.tests.TweetApiTests Coverage Results" MODIFIED="1635236398614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_tests_Tweet_test.coverage" NAME="Test: accounts.tests.Tweet_test Coverage Results" MODIFIED="1635237557984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_api_tests_TweetApiTests_test_retrive.coverage" NAME="Test: tweets.api.tests.TweetApiTests.test_retrive Coverage Results" MODIFIED="1638180830766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_api_tests_AccountApiTests_test_signup.coverage" NAME="Test: accounts.api.tests.AccountApiTests.test_signup Coverage Results" MODIFIED="1634966873883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_tests_Tweet_test_test_hour_to_now.coverage" NAME="Test: accounts.tests.Tweet_test.test_hour_to_now Coverage Results" MODIFIED="1635237763883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipApiTest_test_unfollow.coverage" NAME="Test: friendships.api.tests.FriendshipApiTest.test_unfollow Coverage Results" MODIFIED="1635171365742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipApiTest_test_followers.coverage" NAME="Test: friendships.api.tests.FriendshipApiTest.test_followers Coverage Results" MODIFIED="1635171667751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_api_tests_TweetApiTests.coverage" NAME="Test: tweets.api.tests.TweetApiTests Coverage Results" MODIFIED="1635083684648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__comments_api_tests_CommentApiTests_test_update.coverage" NAME="Test: comments.api.tests.CommentApiTests.test_update Coverage Results" MODIFIED="1637915722097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipApiTest_test_followers.coverage" NAME="Test: friendships.api.tests.FriendshipApiTest.test_followers Coverage Results" MODIFIED="1635236233396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipApiTest_test_followings.coverage" NAME="Test: friendships.api.tests.FriendshipApiTest.test_followings Coverage Results" MODIFIED="1635171581209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_api_tests_AccountApiTests_test_login.coverage" NAME="Test: accounts.api.tests.AccountApiTests.test_login Coverage Results" MODIFIED="1634966574648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_api_tests_TweetApiTests_test_list.coverage" NAME="Test: tweets.api.tests.TweetApiTests.test_list Coverage Results" MODIFIED="1634963524141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_api_tests_AccountApiTests_test_signup.coverage" NAME="Test: accounts.api.tests.AccountApiTests.test_signup Coverage Results" MODIFIED="1634966873883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_api_tests_AccountApiTests.coverage" NAME="Test: accounts.api.tests.AccountApiTests Coverage Results" MODIFIED="1634967936453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__comments_api_tests_CommentApiTests_testlist.coverage" NAME="Test: comments.api.tests.CommentApiTests.testlist Coverage Results" MODIFIED="1637916882153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_api_tests_AccountApiTests.coverage" NAME="Test: accounts.api.tests.AccountApiTests Coverage Results" MODIFIED="1635236831616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipApiTest_test_follow.coverage" NAME="Test: friendships.api.tests.FriendshipApiTest.test_follow Coverage Results" MODIFIED="1635170283676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__accounts_tests_Tweet_test_test_get_followers.coverage" NAME="Test: accounts.tests.Tweet_test.test_get_followers Coverage Results" MODIFIED="1635244522677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

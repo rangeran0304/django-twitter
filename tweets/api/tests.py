@@ -6,6 +6,7 @@ from tweets.models import Tweet
 # 注意要加 '/' 结尾，要不然会产生 301 redirect
 TWEET_LIST_API = '/api/tweets/'
 TWEET_CREATE_API = '/api/tweets/'
+TWEET_RETRIVE_API = '/api/tweets/{}/'
 
 
 class TweetApiTests(TestCase):
@@ -66,4 +67,15 @@ class TweetApiTests(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data['user']['id'], self.user1.id)
         self.assertEqual(Tweet.objects.count(), tweets_count + 1)
+    def test_retrive(self):
+        # the tweet with id = -1 does not exist
+        response = self.anonymous_client.get(TWEET_RETRIVE_API.format(-1))
+        self.assertEqual(response.status_code,404)
+        #test that it can get the comment of a tweet
+        response = self.anonymous_client.get(TWEET_RETRIVE_API.format(self.tweets1[0].id))
+        self.assertEqual(len(response.data['comments']),0)
+        # test that you can get the right comment
+        self.create_comment(self.user1,self.tweets1[0].id,'testtest')
+        response = self.anonymous_client.get(TWEET_RETRIVE_API.format(self.tweets1[0].id))
+        self.assertEqual(response.data['comments'][0], 'testtest')
 
