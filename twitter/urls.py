@@ -25,6 +25,7 @@ from django.conf import settings
 from friendships.api.views import FriendshipsViewSet
 from newsfeeds.api.views import NewsFeedViewSet
 from comments.api.views import CommentViewSet
+from likes.api.views import LikeViewSet
 
 
 router = routers.DefaultRouter()
@@ -34,6 +35,7 @@ router.register(r'api/tweets', TweetViewset, basename='tweets')
 router.register(r'api/friendships', FriendshipsViewSet, basename='Friendships')
 router.register(r'api/newsfeeds', NewsFeedViewSet, basename='NewsFeeds')
 router.register(r'api/comments', CommentViewSet, basename='comments')
+router.register(r'api/likes', LikeViewSet, basename='likes')
 
 
 urlpatterns = [
