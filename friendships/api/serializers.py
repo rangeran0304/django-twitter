@@ -17,6 +17,7 @@ class FriendshipSerializerForCreate(serializers.ModelSerializer):
             raise ValidationError({
                 'message': 'you can not follow yourself'
             })
+
         if Friendships.objects.filter(
             from_user_id = attrs['from_user_id'],
             to_user_id = attrs['to_user_id']
@@ -24,6 +25,8 @@ class FriendshipSerializerForCreate(serializers.ModelSerializer):
             raise ValidationError({
                 'message': 'You can not follow the same person twice'
             })
+
+
         return attrs
 
     def create(self, validated_data):

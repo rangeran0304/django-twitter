@@ -39,14 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party
     'rest_framework',
+    'django_filters',
     # project apps
     'accounts',
     'tweets',
     'friendships',
+    'newsfeeds',
+    'comments',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    # 'PAGE_SIZE'means the defaut page size
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
 }
 
 MIDDLEWARE = [
@@ -135,6 +142,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 INTERNAL_IPS = ['127.0.0.1', '192.168.33.10', 'localhost','10.0.2.2']
+try:
+    from .local_settings import *
+except:
+    pass
 
 
 

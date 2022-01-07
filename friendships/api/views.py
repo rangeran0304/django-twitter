@@ -8,11 +8,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from friendships.models import Friendships
 from friendships.api.serializers import FollowerSerializer
 from friendships.api.serializers import FollowingSerializer, FriendshipSerializerForCreate
+from django.contrib.auth.models import User
 
 class FriendshipsViewSet(viewsets.GenericViewSet):
 
     # 当访问POST的方法时必须要指定serializer——class，不然会报错
     serializer_class = FriendshipSerializerForCreate
+    queryset = User.objects.all().order_by('-date_joined')
     @action(methods=['GET'],detail=True,permission_classes=[AllowAny])
     def followers(self,request,pk):
         friendships = Friendships.objects.filter(to_user_id= pk).order_by('-created_at')
@@ -32,7 +34,8 @@ class FriendshipsViewSet(viewsets.GenericViewSet):
 
     @action(methods=['POST'], detail=True, permission_classes=[IsAuthenticated])
     def follow(self,request,pk):
-
+        # 判定是否关注的是不存在的用户
+        self.get_object()
         # 判定是否已经关注了某人，或是进行了重复的follow操作,进行静默操作
         if Friendships.objects.filter(from_user_id = request.user, to_user_id= pk).exists():
             return Response({
