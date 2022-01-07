@@ -29,7 +29,7 @@ class TweetViewset(viewsets.GenericViewSet):
             return Response(
                 TweetSerializerWithComments(
                     tweet,
-                    context= {'pre':True},
+                    context= {'pre':True,'request':request,},
                 ).data
             )
         else:
@@ -37,10 +37,10 @@ class TweetViewset(viewsets.GenericViewSet):
             return Response(
                   TweetSerializerWithComments(
                       tweet,
-                      context={'pre': False},
+                      context={'pre': False,'request':request},
                   ).data
             )
-    @required_params(['user_id'])
+    @required_params(params = ['user_id'])
     def list(self, request, *args, **kwargs):
 
         # 这句查询会被翻译为

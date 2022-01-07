@@ -21,6 +21,7 @@ class NewsFeedService(object):
         newsfeeds = [
             NewsFeed(user = follower, tweet = tweet)
             for follower in followers
+
         ]
     #发帖者本人也要看到这个帖子
         newsfeeds.append(NewsFeed(user= tweet.user, tweet = tweet))

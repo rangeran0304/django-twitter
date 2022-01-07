@@ -27,7 +27,11 @@ class CommentViewSet(viewsets.GenericViewSet):
         queryset = self.get_queryset()
         comments = self.filter_queryset(queryset)
         return Response(
-            {'comments':CommentSerializer(comments,many=True).data}
+            {'comments':CommentSerializer(
+                comments,
+                context={'request':request},
+                many=True).data,
+             }
             ,status=status.HTTP_200_OK
         )
 

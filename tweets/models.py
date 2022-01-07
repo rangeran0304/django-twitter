@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from utils.time_helpers import utc_now
-
+from django.contrib.contenttypes.fields import ContentType
+from likes.models import Like
 
 # 建立联合索引，并配置排序配置
 # 首先根据user排序再根据createdat排序。-代表降序
@@ -24,5 +25,11 @@ class Tweet(models.Model):
     def __str__(self):
         return f'created at {self.created_at} by {self.user} : {self.content}'
 
+    @property
+    def like_set(self):
+        return Like.objects.filter(
+            content_Type = ContentType.objects.get_for_model(Tweet),
+            object_id = self.id
+        ).order_by('created_at')
 
 # Create your models here.

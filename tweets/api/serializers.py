@@ -5,33 +5,32 @@ from accounts.api.serializers import UserSerializer
 from comments.api.serializers import CommentSerializer
 from comments.models import Comment
 from comments.api.serializers import CommentSerializer
+from likes.services import LikeService
 
 
 
 # 用于请求成功之后返回相关信息
 class TweetSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    likes_count = serializers.SerializerMethodField()
+    has_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Tweet
-        fields = ('id', 'user', 'created_at', 'content')
+        fields = ('id', 'user', 'created_at', 'content','likes_count','has_liked')
+    def get_likes_count(self,obj):
+        return obj.like_set.count()
+    def get_has_liked(self,obj):
+        return LikeService.has_liked(self.context['request'].user,obj)
 
-class TweetSerializerWithComments(serializers.ModelSerializer):
+
+class TweetSerializerWithComments(TweetSerializer):
     user = UserSerializer()
-    #comments = CommentSerializer(source='comment_set',many=True)
-    comments = serializers.SerializerMethodField()
+    comments = CommentSerializer(source='comment_set',many=True)
     class Meta:
         model = Tweet
-        fields = ('id', 'user', 'created_at', 'content','comments')
+        fields = ('id', 'user', 'created_at', 'content','comments','likes_count','has_liked')
 
-    def get_comments(self,obj):
-        comments = [
-            comment.content
-            for comment in Comment.objects.filter(Tweet_id=obj.id)
-        ]
-        if self.context['pre']:
-            return comments[0:2]
-        return comments
 
 
 # 创建Tweetcreate用以创建tweet
