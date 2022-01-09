@@ -7,7 +7,7 @@ from newsfeeds.services import NewsFeedService
 from comments.api.serializers import CommentSerializer,CommentSerializerForCreate,CommentSerializerForUpdate
 from comments.api.permissions import IsObjectOwner
 from  comments.models import Comment
-from rest_framework.decorators import action
+from inbox.services import NotificationServices
 from utils.decorators import required_params
 
 class CommentViewSet(viewsets.GenericViewSet):
@@ -37,7 +37,7 @@ class CommentViewSet(viewsets.GenericViewSet):
 
     def create(self,request,*args,**kargs):
         data = {
-            'tweet_id':request.data.get('Tweet_id'),
+            'Tweet_id':request.data.get('Tweet_id'),
             'content':request.data.get('content'),
         }
 
@@ -45,15 +45,18 @@ class CommentViewSet(viewsets.GenericViewSet):
             data=data,
             context= {'request':request},
         )
-
         if not serializer.is_valid():
             return Response({
                 'message':'Please check input',
                 'errors':serializer.errors,
             },status=status.HTTP_400_BAD_REQUEST)
         comment = serializer.save()
+        NotificationServices.send_comment_notification(comment)
+        commentSerializer = \
+            CommentSerializer(comment,
+                            context={'request':request})
         return  Response(
-            CommentSerializer(comment).data,
+            commentSerializer.data,
             status = status.HTTP_201_CREATED)
 
     def update(self,request,*args,**kargs):
@@ -70,8 +73,11 @@ class CommentViewSet(viewsets.GenericViewSet):
                 status = status.HTTP_400_BAD_REQUEST
             )
         comment = serializer.save()
+        commentSerializer = \
+            CommentSerializer(comment,
+                              context={'request': request})
         return Response(
-            CommentSerializer(comment).data,
+            commentSerializer.data,
             status = status.HTTP_200_OK,
         )
 

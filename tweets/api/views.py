@@ -53,7 +53,7 @@ class TweetViewset(viewsets.GenericViewSet):
             user_id = request.query_params['user_id']).order_by(
             '-created_at'
         )
-        serializer = TweetSerializer(instance=tweets, many=True)
+        serializer = TweetSerializer(instance=tweets,context={'request':self.request}, many=True)
         # 一般来说 json 格式的 response 默认都要用 hash 的格式
         # 而不能用 list 的格式（约定俗成）
         return Response({'tweets':serializer.data},status=status.HTTP_200_OK)
@@ -74,6 +74,7 @@ class TweetViewset(viewsets.GenericViewSet):
             }, status=400)
         tweet = serializer.save()
         NewsFeedService.fanout_to_followers(tweet)
-        return Response(TweetSerializer(tweet).data,status=201)
+
+        return Response(TweetSerializer(tweet,context = {'request':self.request}).data,status=201)
 
 
