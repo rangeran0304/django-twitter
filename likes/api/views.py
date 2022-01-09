@@ -8,6 +8,7 @@ from newsfeeds.services import NewsFeedService
 from utils.decorators import required_params
 from rest_framework import status
 from rest_framework.decorators import action
+from inbox.services import NotificationServices
 
 class LikeViewSet(viewsets.ModelViewSet):
 
@@ -15,7 +16,7 @@ class LikeViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = LikeserializerForCreate
 
-    @required_params(request_attr='data',params=['content_Type','object_id'])
+    @required_params(method='POST',params=['content_Type','object_id'])
     def create(self, request, *args, **kwargs,):
         serializer = LikeserializerForCreate(
             data = request.data,
@@ -27,13 +28,16 @@ class LikeViewSet(viewsets.ModelViewSet):
                   'errors': serializer.errors,
                   },status = status.HTTP_400_BAD_REQUEST
                    )
-        instance = serializer.save()
+        instance,created = serializer.get_or_create()
+        if created:
+            NotificationServices.send_like_notification(instance)
+
         return Response(
             Likeserializer(instance).data,
             status=status.HTTP_201_CREATED,
         )
     @action(methods=['post'],detail=False)
-    @required_params(request_attr='data', params=['content_Type', 'object_id'])
+    @required_params(method='POST', params=['content_Type', 'object_id'])
     def cancel(self, request, *args, **kwargs):
         serializer = LikeserializerForCancel(
             data=request.data,

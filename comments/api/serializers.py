@@ -15,7 +15,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('id','Tweet_id','User','content','created_at','updated_at','likes_count','has_liked')
 
     def get_has_liked(self, obj):
-        return LikeService.has_liked(self.context['request'].user, obj)
+       return LikeService.has_liked(self.context['request'].user, obj)
 
     def get_likes_count(self, obj):
         return obj.like_set.count()
@@ -29,14 +29,14 @@ class CommentSerializerForCreate(serializers.ModelSerializer):
         fields = ('content','Tweet_id',)
 
     def validate(self,data):
-        tweet_id = data['tweet_id']
+        tweet_id = data['Tweet_id']
         if not Tweet.objects.filter(id = tweet_id).exists():
             raise ValidationError({'message':'the tweet you comment at does not exist'})
         return data
     def create(self,validate_data):
         user = self.context['request'].user
         comment = Comment.objects.create(
-            Tweet_id=validate_data['tweet_id'],
+            Tweet_id=validate_data['Tweet_id'],
             content=validate_data['content'],
             User=user,
         )
@@ -45,7 +45,7 @@ class CommentSerializerForCreate(serializers.ModelSerializer):
 class CommentSerializerForUpdate(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('content')
+        fields = ('content',)
     #when the instance is not none when you call .save, you will update the instance
     def update(self, instance, validated_data):
         instance.content = validated_data['content']

@@ -77,7 +77,7 @@ class TweetApiTests(TestCase):
         # test that you can get the right comment
         self.create_comment(self.user1,self.tweets1[0].id,'testtest')
         response = self.anonymous_client.get(TWEET_RETRIVE_API.format(self.tweets1[0].id))
-        self.assertEqual(response.data['comments'][0], 'testtest')
+        self.assertEqual(response.data['comments'][0]['content'], 'testtest')
 
     def test_like_set(self):
         self.create_like(self.user1,self.tweets1[0])

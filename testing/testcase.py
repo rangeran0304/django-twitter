@@ -6,7 +6,9 @@ from django.contrib.contenttypes.fields import ContentType
 from likes.models import Like
 from rest_framework.test import APIClient
 
-
+COMMENT_URL = '/api/comments/'
+LIKE_URL = '/api/likes/'
+NOTIFICATION_URL = '/api/notifications/'
 class TestCase(DjangoTestCase):
 
     anonymous_client = APIClient()
@@ -36,3 +38,33 @@ class TestCase(DjangoTestCase):
         client = APIClient()
         client.force_authenticate(user)
         return user, client
+
+    def post_comment(self,client,tweet_id,content=None):
+        if content == None:
+            client.post('/api/comments/',
+                        {
+                            'Tweet_id': tweet_id,
+                            'content': 'default comment'
+                        }
+
+                        )
+            return
+
+        client.post('/api/comments/',
+                    {
+                        'Tweet_id' : tweet_id,
+                        'content': content
+                    }
+
+        )
+        return
+
+    def post_tweet_like(self, client, target,):
+            client.post(LIKE_URL,
+                        {
+                            'content_Type': 'tweet',
+                            'object_id':target.id,
+                        }
+
+                        )
+            return

@@ -18,7 +18,7 @@ class CommentApiTests(TestCase):
         self.tweet1 = self.create_tweet(self.test1,'this is a test')
         self.anonymous_client = APIClient()
 
-    def testcreate(self):
+    def test_create(self):
         #you can not comment if you dont log in
         response = self.anonymous_client.post(COMMENT_URL)
         self.assertEqual(response.status_code,403)
@@ -38,7 +38,7 @@ class CommentApiTests(TestCase):
         self.assertEqual('content'in response.data['errors'],True)
         #a successful comment
         response = self.test1_Client.post(COMMENT_URL
-                                         , {'tweet_id': self.tweet1.id, 'content': 'successful test'})
+                                         , {'Tweet_id': self.tweet1.id, 'content': 'successful test'})
         self.assertEqual(response.status_code,201)
         self.assertEqual(response.data['User'], self.test1.id)
         self.assertEqual(response.data['Tweet_id'], self.tweet1.id)
@@ -76,7 +76,7 @@ class CommentApiTests(TestCase):
         self.assertNotEqual(comment.created_at, now)
         self.assertNotEqual(comment.updated_at, before_updated_at)
 
-    def testlist(self):
+    def test_list(self):
         # you cant get a list without tweet_id
         reponse = self.anonymous_client.get(COMMENT_URL)
         self.assertEqual(reponse.status_code,400)
