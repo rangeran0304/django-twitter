@@ -6,7 +6,7 @@ from tweets.api.serializers import Tweet,TweetcreateSerializer,TweetSerializer
 from newsfeeds.services import NewsFeedService
 from comments.api.serializers import CommentSerializer,CommentSerializerForCreate,CommentSerializerForUpdate
 from comments.api.permissions import IsObjectOwner
-from  comments.models import Comment
+from comments.models import Comment
 from inbox.services import NotificationServices
 from utils.decorators import required_params
 
