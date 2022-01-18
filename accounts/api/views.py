@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
+from utils.permissions import IsObjectOwner
 from rest_framework.response import Response
-from django.http import HttpResponse
 from accounts.api.serializers import UserSerializer
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
@@ -11,11 +11,9 @@ from django.contrib.auth import(
     login as django_login,
     logout as django_logout,
 )
-from accounts.api.serializers import SignupSerializer, LoginSerializer
+from accounts.api.serializers import SignupSerializer, LoginSerializer, UserSerializerWithProfile, UserProfileSerilizerForUpdate
+from accounts.models import UserProfile
 
-
-def say_hello(request):
-    return HttpResponse("helloworld")
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -23,8 +21,15 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializerWithProfile
+    permission_classes = [permissions.IsAdminUser]
+
+class UserProfileViewSet(viewsets.GenericViewSet,viewsets.mixins.UpdateModelMixin):
+    serializer_class = UserProfileSerilizerForUpdate
+    queryset = UserProfile
+    permission_classes = (IsObjectOwner,)
+
+
 
 class AccountViewSet(viewsets.ViewSet):
     permission_classes =  (AllowAny,)

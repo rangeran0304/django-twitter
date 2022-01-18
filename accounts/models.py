@@ -14,7 +14,7 @@ class UserProfile(models.Model):
 
     def get_profile(user):
         if hasattr(user,'_cached_user_profile'):
-            return getattr('_cached_user_profile')
+            return getattr(user,'_cached_user_profile')
         userprofile,_ = UserProfile.objects.get_or_create(user=user)
         setattr(user,'_cached_user_profile',userprofile)
         return userprofile

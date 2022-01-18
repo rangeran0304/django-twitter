@@ -19,7 +19,7 @@ routers(一种路由机制)实际上就是viewset对象的url映射关系提取�
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from accounts.api.views import UserViewSet,AccountViewSet
+from accounts.api.views import UserViewSet,AccountViewSet,UserProfileViewSet
 from tweets.api.views import TweetViewset
 from django.conf import settings
 from friendships.api.views import FriendshipsViewSet
@@ -31,7 +31,8 @@ from inbox.api.views import NotificationviewSet
 
 router = routers.DefaultRouter()
 router.register(r'api/users', UserViewSet)
-router.register(r'api/accounts', AccountViewSet, basename='accounts')
+router.register(r'api/profiles', UserProfileViewSet, basename='profile')
+router.register(r'api/accounts', AccountViewSet, basename='account')
 router.register(r'api/tweets', TweetViewset, basename='tweets')
 router.register(r'api/friendships', FriendshipsViewSet, basename='Friendships')
 router.register(r'api/newsfeeds', NewsFeedViewSet, basename='NewsFeeds')

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 @admin.register(UserProfile)
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user','nickname','signature','created_at','updated_at')
+    list_display = ('user','nickname','signature','avatar','created_at','updated_at')
     date_hierarchy = 'created_at'
 
 class UserProfileInline(admin.StackedInline):
