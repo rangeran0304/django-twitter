@@ -5,6 +5,7 @@ from comments.models import Comment
 from django.contrib.contenttypes.fields import ContentType
 from likes.models import Like
 from rest_framework.test import APIClient
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 COMMENT_URL = '/api/comments/'
 LIKE_URL = '/api/likes/'
@@ -23,6 +24,7 @@ class TestCase(DjangoTestCase):
         if content is None:
             content = 'default tweet content'
         return Tweet.objects.create(user=user, content=content)
+
 
     def create_comment(self,user,tweet_id,content=None):
         if content is None:

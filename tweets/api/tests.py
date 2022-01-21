@@ -1,8 +1,8 @@
 from rest_framework.test import APIClient
 from testing.testcase import TestCase
 from tweets.models import Tweet
-
-
+from django.core.files.uploadedfile import SimpleUploadedFile
+from tweets.models import TweetPhoto
 # 注意要加 '/' 结尾，要不然会产生 301 redirect
 TWEET_LIST_API = '/api/tweets/'
 TWEET_CREATE_API = '/api/tweets/'
@@ -85,3 +85,30 @@ class TweetApiTests(TestCase):
         self.create_like(self.user1, self.tweets1[0])
         self.assertEqual(self.tweets1[0].like_set.count(), 1)
 
+    def test_tweet_with_photo(self):
+        file = SimpleUploadedFile(
+            name='selfie.jpg',
+            content=str.encode('a fake image'),
+            content_type='image/jpeg',
+        )
+        #test creating a tweet with empty file
+        response = self.user1_client.post(TWEET_CREATE_API,{
+            'content' : "123456789",
+            'files' : [],
+        })
+        self.assertEqual(response.status_code,201)
+        self.assertEqual(TweetPhoto.objects.count(),0)
+        #test ceating a tweet with one file
+        response = self.user1_client.post(TWEET_CREATE_API, {
+            'content': "123456789",
+            'files': [file],
+        })
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(TweetPhoto.objects.count(), 1)
+        #test creating a tweet with more than 9 files
+        response = self.user1_client.post(TWEET_CREATE_API, {
+            'content': "123456789",
+            'files': [file,file,file,file,file,file,file,file,file,file,file,file],
+        })
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(TweetPhoto.objects.count(), 1)
