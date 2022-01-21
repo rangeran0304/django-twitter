@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers, exceptions
 from tweets.models import Tweet
+from accounts.models import UserProfile
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         meta指的是配置信息,定制一些行为规范
         """""
         model = User
-        fields = ['id','username', 'email']
+        fields = ('id','username',)
 """
 signup中使用
 """
@@ -61,29 +62,27 @@ class LoginSerializer(serializers.Serializer):
        data['username'] = username
        return data
 
+class UserSerializerWithProfile(UserSerializer):
 
-# 用于请求成功之后返回相关信息
-class TweetSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-
+    nickname = serializers.CharField(source='profile.nickname')
+    #avatar = serializers.FileField(source='profile.avatar')
+    avatar_url = serializers.SerializerMethodField()
     class Meta:
-        model = Tweet
-        fields = ('id', 'user', 'created_at', 'content')
+        model = User
+        fields = ('id','username','nickname','avatar_url')
 
+    def get_avatar_url(self,obj):
+        if obj.profile.avatar:
+            return obj.profile.avatar.url
+        return None
+# 用于请求成功之后返回相关信息
+class UserProfileSerilizerForUpdate(UserSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ('nickname','avatar')
 
 # 创建Tweetcreate用以创建tweet
-class TweetcreateSerializer(serializers.ModelSerializer):
-    content = serializers.CharField(min_length=6, max_length=140)
 
-    class Meta:
-        model = Tweet
-        fields = ('content',)
-
-    def create(self, validated_data):
-        user = self.context['request'].user
-        content = validated_data['content']
-        tweet = Tweet.objects.create(user=user, content=content)
-        return tweet
 class UserserializerForFollower(serializers.ModelSerializer):
 
     class Meta:

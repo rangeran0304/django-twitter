@@ -2,13 +2,18 @@ from django.contrib.contenttypes.fields import ContentType
 from comments.models import Comment
 from tweets.models import Tweet
 from notifications.signals import notify
+from django.contrib.contenttypes.fields import ContentType
 
 class NotificationServices(object):
     @classmethod
     def send_like_notification(cls,like):
         target_like = like.content_object
-        if target_like.user == like.user:
-            return
+        if target_like.__class__ == ContentType.objects.get_for_model(Tweet):
+            if target_like.user == like.user:
+                return
+        if target_like.__class__ == ContentType.objects.get_for_model(Comment):
+            if target_like.User == like.user:
+                return
         if like.content_Type == ContentType.objects.get_for_model(Tweet):
             notify.send(
                 like.user,
@@ -20,7 +25,7 @@ class NotificationServices(object):
         if like.content_Type == ContentType.objects.get_for_model(Comment):
             notify.send(
                 like.user,
-                recipient = target_like.user,
+                recipient = target_like.User,
                 actor = like.user,
                 verb = 'liked your comment',
                 target = target_like,
